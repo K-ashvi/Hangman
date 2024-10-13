@@ -1,10 +1,8 @@
-//repeated letter : say repeated and dont give extra points
-
 let chosenWord;
 let displayedWord;
 let lives;
 let score = 0;
-const maxLives = 6;
+const maxLives = 8;  // Update to 8
 
 // Canvas for drawing the stick figure
 const canvas = document.getElementById("hangmanCanvas");
@@ -15,14 +13,14 @@ const drawHangman = (livesLeft) => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas for a fresh drawing
 
     // Draw the base
-    if (livesLeft < 6) {
+    if (livesLeft < 8) {
         ctx.beginPath();
         ctx.moveTo(10, 290);
         ctx.lineTo(190, 290);
         ctx.stroke();
     }
     // Draw the pole
-    if (livesLeft < 5) {
+    if (livesLeft < 7) {
         ctx.beginPath();
         ctx.moveTo(50, 290);
         ctx.lineTo(50, 50);
@@ -31,39 +29,42 @@ const drawHangman = (livesLeft) => {
         ctx.stroke();
     }
     // Draw the head
-    if (livesLeft < 4) {
+    if (livesLeft < 6) {
         ctx.beginPath();
         ctx.arc(150, 100, 20, 0, Math.PI * 2);
         ctx.stroke();
     }
     // Draw the body
-    if (livesLeft < 3) {
+    if (livesLeft < 5) {
         ctx.beginPath();
         ctx.moveTo(150, 120);
         ctx.lineTo(150, 200);
         ctx.stroke();
     }
     // Draw the left arm
-    if (livesLeft < 2) {
+    if (livesLeft < 4) {
         ctx.beginPath();
         ctx.moveTo(150, 150);
         ctx.lineTo(120, 180);
         ctx.stroke();
     }
     // Draw the right arm
-    if (livesLeft < 1) {
+    if (livesLeft < 3) {
         ctx.beginPath();
         ctx.moveTo(150, 150);
         ctx.lineTo(180, 180);
         ctx.stroke();
     }
-    // Draw the legs
-    if (livesLeft === 0) {
+    // Draw the left leg
+    if (livesLeft < 2) {
         ctx.beginPath();
         ctx.moveTo(150, 200);
         ctx.lineTo(120, 250);
         ctx.stroke();
-
+    }
+    // Draw the right leg
+    if (livesLeft === 0) {
+        ctx.beginPath();
         ctx.moveTo(150, 200);
         ctx.lineTo(180, 250);
         ctx.stroke();
